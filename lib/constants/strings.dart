@@ -14,8 +14,7 @@ class Strings {
   static const facebookSignupUrl = 'https://www.facebook.com/signup';
   static const google = 'Google';
   static const googleSignupUrl = 'https://accounts.google.com/signup';
-  static const logIntoYourAccount =
-      'Log into your account using one of the options below.';
+  static const logIntoYourAccount = 'Log into your account using $google.';
   static const comments = 'Comments';
   static const writeYourCommentHere = 'Write your comment here...';
   static const checkOutThisPost = 'Check out this post!';
@@ -34,7 +33,7 @@ class Strings {
   static const dontHaveAnAccount = "Don't have an account?\n";
   static const signUpOn = 'Sign up on ';
   static const orCreateAnAccountOn = ' or create an account on ';
-    static const allowLikesTitle = 'Allow likes';
+  static const allowLikesTitle = 'Allow likes';
   static const allowLikesDescription =
       'By allowing likes, users will be able to press the like button on your post.';
   static const allowLikesStorageKey = 'allow_likes';

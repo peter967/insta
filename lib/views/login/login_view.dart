@@ -4,6 +4,7 @@ import 'package:insta/constants/app_color.dart';
 import 'package:insta/constants/strings.dart';
 import 'package:insta/state/auth/providers/auth_state_provider.dart';
 import 'package:insta/views/login/google_button.dart';
+import 'package:insta/views/login/login_view_signup_links.dart';
 import '../login/divider.dart';
 
 class LoginView extends ConsumerWidget {
@@ -45,6 +46,7 @@ class LoginView extends ConsumerWidget {
                 child: const GoogleButton(),
               ),
               const DividerWidget(),
+              const LoginViewSignUpLink(),
             ],
           ),
         ),

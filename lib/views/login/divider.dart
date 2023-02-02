@@ -10,7 +10,7 @@ class DividerWidget extends StatelessWidget {
         SizedBox(
           height: 40,
         ),
-        DividerWidget(),
+        Divider(),
         SizedBox(
           height: 40,
         ),

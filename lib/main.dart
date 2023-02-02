@@ -6,6 +6,7 @@ import 'package:insta/state/auth/providers/is_logged_in_provider.dart';
 import 'package:insta/state/providers/is_loading_provider.dart';
 import 'firebase_options.dart';
 import 'views/components/loading/loading_screen.dart';
+import 'views/login/login_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +24,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+      theme: ThemeData.dark(
         useMaterial3: true,
       ),
       home: Consumer(
@@ -66,26 +67,6 @@ class MainView extends ConsumerWidget {
         child: IconButton(
             onPressed: ref.read(authStateProvider.notifier).logOut,
             icon: const Icon(Icons.logout_outlined)),
-      ),
-    );
-  }
-}
-
-class LoginView extends ConsumerWidget {
-  const LoginView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context, ref) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('login'),
-      ),
-      body: Center(
-        child: IconButton(
-            onPressed: ref.read(authStateProvider.notifier).loginWithGoogle,
-            icon: const Icon(Icons.login)),
       ),
     );
   }
