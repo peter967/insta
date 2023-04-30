@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:insta/state/auth/backend/authenticator.dart';
 import 'firebase_options.dart';
+import 'dart:developer' as devtools show log;
+
+extension Log on Object {
+  void log() => devtools.log(toString());
+}
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,7 +55,8 @@ class HomePage extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () async {
-                Authenticator().loginWithGoogle();
+                final result = const Authenticator().logOut();
+                result.log();
               },
               child: const Text('Google'),
             ),
