@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:insta/state/auth/backend/authenticator.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:insta/state/auth/providers/auth_state_provider.dart';
+import 'package:insta/state/auth/providers/is_logged_in_provider.dart';
 import 'firebase_options.dart';
-import 'dart:developer' as devtools show log;
-
-extension Log on Object {
-  void log() => devtools.log(toString());
-}
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +11,11 @@ main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const App());
+  runApp(
+    const ProviderScope(
+      child: App(),
+    ),
+  );
 }
 
 class App extends StatelessWidget {
@@ -34,34 +35,55 @@ class App extends StatelessWidget {
       ),
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: Consumer(builder: (context, ref, child) {
+        final isLoggedIn = ref.watch(isLoggedInProvider);
+        if (isLoggedIn) {
+          return const MainView();
+        } else {
+          return const LoginView();
+        }
+      }),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class MainView extends ConsumerWidget {
+  const MainView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        title: const Text('Home View'),
         centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton(
-              onPressed: () async {
-                final result = const Authenticator().logOut();
-                result.log();
-              },
-              child: const Text('Google'),
-            ),
-          ],
-        ),
+      body: TextButton(
+        onPressed: ref.read(authStateProvider.notifier).logOut,
+        child: const Text('LogOut'),
+      ),
+    );
+  }
+}
+
+class LoginView extends ConsumerWidget {
+  const LoginView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context, ref) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Login View'),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: [
+          TextButton(
+            onPressed: ref.read(authStateProvider.notifier).loginWithGoogle,
+            child: const Text('Google'),
+          ),
+        ],
       ),
     );
   }
