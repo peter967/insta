@@ -50,38 +50,41 @@ class LoadingScreen {
             child: Container(
               constraints: BoxConstraints(
                 maxWidth: size.width * 0.8,
-                maxHeight: size.height * 0.8,
-                minWidth: size.width * 0.5,
+                maxHeight: size.height * 0.5,
+                minWidth: size.width * 0.4,
               ),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10.0),
               ),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: 10),
-                    const CircularProgressIndicator(),
-                    const SizedBox(height: 10),
-                    StreamBuilder<String>(
-                      stream: textController.stream,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return Text(
-                            snapshot.requireData,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium
-                                ?.copyWith(color: Colors.black),
-                          );
-                        } else {
-                          return Container();
-                        }
-                      },
-                    ),
-                  ],
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(height: 10),
+                      const CircularProgressIndicator(),
+                      const SizedBox(height: 20),
+                      StreamBuilder<String>(
+                        stream: textController.stream,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Text(
+                              snapshot.requireData,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.copyWith(color: Colors.black),
+                            );
+                          } else {
+                            return Container();
+                          }
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
