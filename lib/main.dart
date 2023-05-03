@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:insta/state/auth/providers/auth_state_provider.dart';
 import 'package:insta/state/auth/providers/is_logged_in_provider.dart';
 import 'firebase_options.dart';
+import 'views/login/login_view.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,30 +61,6 @@ class MainView extends ConsumerWidget {
       body: TextButton(
         onPressed: ref.read(authStateProvider.notifier).logOut,
         child: const Text('LogOut'),
-      ),
-    );
-  }
-}
-
-class LoginView extends ConsumerWidget {
-  const LoginView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context, ref) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login View'),
-        centerTitle: true,
-      ),
-      body: Column(
-        children: [
-          TextButton(
-            onPressed: ref.read(authStateProvider.notifier).loginWithGoogle,
-            child: const Text('Google'),
-          ),
-        ],
       ),
     );
   }
