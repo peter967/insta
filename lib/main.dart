@@ -18,11 +18,11 @@ main() async {
   );
 }
 
-class App extends StatelessWidget {
+class App extends ConsumerWidget {
   const App({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return MaterialApp(
       darkTheme: ThemeData(
         brightness: Brightness.dark,
