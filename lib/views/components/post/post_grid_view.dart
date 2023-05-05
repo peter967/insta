@@ -4,7 +4,7 @@ import 'package:insta/views/components/post/post_thumbnail_view.dart';
 import '../../../state/posts/typedes/models/post.dart';
 
 class PostGridView extends StatelessWidget {
-  final Iterable<Post> posts;
+  final Iterable<Posts> posts;
   const PostGridView({super.key, required this.posts});
 
   @override

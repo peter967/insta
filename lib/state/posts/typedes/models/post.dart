@@ -6,7 +6,7 @@ import '../../../image_upload/models/file_type.dart';
 import '../../../post_settings/model/post_settings.dart';
 
 @immutable
-class Post {
+class Posts {
   final String postId;
   final String userId;
   final String message;
@@ -20,7 +20,7 @@ class Post {
   final String originalFileStorageId;
   final Map<PostSetting, bool> postSettings;
 
-  Post({
+  Posts({
     required this.postId,
     required Map<String, dynamic> json,
   })  : userId = json[PostKey.userId],

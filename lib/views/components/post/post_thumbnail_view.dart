@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../state/posts/typedes/models/post.dart';
 
 class PostThumbnailView extends StatelessWidget {
-  final Post post;
+  final Posts post;
   final VoidCallback onTap;
   const PostThumbnailView({
     super.key,
