@@ -5,6 +5,7 @@ import 'package:insta/state/auth/providers/auth_state_provider.dart';
 import 'package:insta/views/components/dialogs/alert_dialog_model.dart';
 import 'package:insta/views/components/dialogs/logout_dialog.dart';
 import 'package:insta/views/constants/strings.dart';
+import 'package:insta/views/tabs/user_post/user_post_view.dart';
 
 class MainView extends ConsumerStatefulWidget {
   const MainView({super.key});
@@ -42,7 +43,25 @@ class _MainViewState extends ConsumerState<MainView> {
               icon: const Icon(Icons.logout_outlined),
             ),
           ],
+          bottom: const TabBar(
+            tabs: [
+              Tab(
+                icon: Icon(Icons.person),
+              ),
+              Tab(
+                icon: Icon(Icons.search),
+              ),
+              Tab(
+                icon: Icon(Icons.home),
+              ),
+            ],
+          ),
         ),
+        body: const TabBarView(children: [
+          UserPostView(),
+          UserPostView(),
+          UserPostView(),
+        ]),
       ),
     );
   }
