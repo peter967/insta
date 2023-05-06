@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:insta/state/auth/providers/auth_state_provider.dart';
 import 'package:insta/state/auth/providers/is_logged_in_provider.dart';
+import 'package:insta/views/tabs/user_post/user_post_view.dart';
 import 'firebase_options.dart';
 import 'views/login/login_view.dart';
 
@@ -39,7 +40,7 @@ class App extends ConsumerWidget {
       home: Consumer(builder: (context, ref, child) {
         final isLoggedIn = ref.watch(isLoggedInProvider);
         if (isLoggedIn) {
-          return const MainView();
+          return const UserPostView();
         } else {
           return const LoginView();
         }
@@ -48,20 +49,3 @@ class App extends ConsumerWidget {
   }
 }
 
-class MainView extends ConsumerWidget {
-  const MainView({super.key});
-
-  @override
-  Widget build(BuildContext context, ref) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home View'),
-        centerTitle: true,
-      ),
-      body: TextButton(
-        onPressed: ref.read(authStateProvider.notifier).logOut,
-        child: const Text('LogOut'),
-      ),
-    );
-  }
-}

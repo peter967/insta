@@ -23,5 +23,5 @@ class LottieAnimationView extends StatelessWidget {
 }
 
 extension GetFullPath on LottieAnimation {
-  String get fullPath => 'assets/animation/$name.json';
+  String get fullPath => 'assets/animations/$name.json';
 }

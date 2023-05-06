@@ -10,6 +10,7 @@ class EmptyContentsWithTextAnimationVew extends StatelessWidget {
     return Center(
       child: Column(
         children: [
+          const EmptyContentsAnimationVew(),
           Padding(
             padding: const EdgeInsets.all(32.0),
             child: Text(
@@ -19,7 +20,6 @@ class EmptyContentsWithTextAnimationVew extends StatelessWidget {
                   ),
             ),
           ),
-          const EmptyContentsAnimationVew(),
         ],
       ),
     );
