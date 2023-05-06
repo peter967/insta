@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:insta/state/auth/providers/auth_state_provider.dart';
 import 'package:insta/state/auth/providers/is_logged_in_provider.dart';
-import 'package:insta/views/tabs/user_post/user_post_view.dart';
+import 'package:insta/views/main/main_view.dart';
 import 'firebase_options.dart';
 import 'views/login/login_view.dart';
 
@@ -40,7 +39,7 @@ class App extends ConsumerWidget {
       home: Consumer(builder: (context, ref, child) {
         final isLoggedIn = ref.watch(isLoggedInProvider);
         if (isLoggedIn) {
-          return const UserPostView();
+          return const MainView();
         } else {
           return const LoginView();
         }
@@ -48,4 +47,3 @@ class App extends ConsumerWidget {
     );
   }
 }
-
