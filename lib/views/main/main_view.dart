@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:insta/state/auth/providers/auth_state_provider.dart';
+import 'package:insta/views/components/dialogs/alert_dialog_model.dart';
+import 'package:insta/views/components/dialogs/logout_dialog.dart';
 import 'package:insta/views/constants/strings.dart';
 
 class MainView extends ConsumerStatefulWidget {
@@ -20,13 +23,24 @@ class _MainViewState extends ConsumerState<MainView> {
           title: const Text(Strings.appName),
           actions: [
             IconButton(
-                onPressed: () async {},
-                icon: const FaIcon(FontAwesomeIcons.film)),
+              onPressed: () async {},
+              icon: const FaIcon(FontAwesomeIcons.film),
+            ),
             IconButton(
-                onPressed: () async {},
-                icon: const Icon(Icons.add_photo_alternate_outlined)),
+              onPressed: () async {},
+              icon: const Icon(Icons.add_photo_alternate_outlined),
+            ),
             IconButton(
-                onPressed: () async {}, icon: const Icon(Icons.logout_outlined))
+              onPressed: () async {
+                final shouldLogOut = await const LogoutDialog()
+                    .present(context)
+                    .then((value) => value ?? false);
+                if (shouldLogOut) {
+                  await ref.read(authStateProvider.notifier).logOut();
+                }
+              },
+              icon: const Icon(Icons.logout_outlined),
+            ),
           ],
         ),
       ),
