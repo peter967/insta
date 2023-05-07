@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../state/posts/typedes/models/post.dart';
+import '../../../state/posts/models/post.dart';
 
 class PostThumbnailView extends StatelessWidget {
   final Posts post;
