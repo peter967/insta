@@ -5,9 +5,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:insta/state/auth/providers/user_id_provider.dart';
 import 'package:insta/state/constants/firebase_collection_name.dart';
 import 'package:insta/state/constants/firebase_fild_name.dart';
-import 'package:insta/state/posts/typedes/models/post.dart';
 
-import '../typedes/models/post_key.dart';
+import '../models/post.dart';
+import '../models/post_key.dart';
+
 
 final userPostsProvider = StreamProvider.autoDispose<Iterable<Posts>>((ref) {
   final userId = ref.watch(userIdProvider);
