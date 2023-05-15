@@ -39,7 +39,4 @@ class PostPayload extends MapView<String, dynamic> {
             },
           },
         );
-
-  @override
-  var operator;
 }

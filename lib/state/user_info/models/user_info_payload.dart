@@ -19,6 +19,5 @@ class UserInfoPayload extends MapView<String, String> {
           },
         );
 
-  @override
-  String? operator;
+
 }

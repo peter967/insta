@@ -1,3 +1,5 @@
+// ignore_for_file: unused_result, unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -55,7 +57,7 @@ class _MainViewState extends ConsumerState<MainView> {
                 if (imageFile == null) {
                   return;
                 }
-                ref.refresh(postSettingProvider);
+                var refresh = ref.refresh(postSettingProvider);
                 if (!mounted) {
                   return;
                 }
